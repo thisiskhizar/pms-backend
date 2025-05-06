@@ -74,3 +74,56 @@ python manage.py seed_test_data
 ```bash
 python manage.py runserver
 ```
+
+---
+
+## 📬 API Endpoints
+
+### Contacts
+
+| Method | Endpoint              | Description                          |
+|--------|-----------------------|--------------------------------------|
+| GET    | `/contacts/`          | List all contacts                    |
+| GET    | `/contacts/?type=landlord` | Filter contacts by type          |
+| POST   | `/contacts/`          | Create landlord or tenant            |
+| PUT    | `/contacts/<id>/`     | Update contact                       |
+| DELETE | `/contacts/<id>/`     | Delete contact                       |
+
+### 🏢 Units
+
+| Method | Endpoint              | Description                          |
+|--------|-----------------------|--------------------------------------|
+| GET    | `/units/`             | List all units                       |
+| POST   | `/units/`             | Add new unit (linked to landlord)    |
+| PUT    | `/units/<id>/`        | Update unit                          |
+| DELETE | `/units/<id>/`        | Delete unit                          |
+
+### 📄 Leases
+
+| Method | Endpoint              | Description                          |
+|--------|-----------------------|--------------------------------------|
+| GET    | `/leases/`            | List all leases                      |
+| POST   | `/leases/`            | Create a lease with unit + contacts  |
+| PUT    | `/leases/<id>/`       | Update lease                         |
+| DELETE | `/leases/<id>/`       | Delete lease                         |
+
+### 📊 Dashboard & Index
+
+| Method | Endpoint              | Description                          |
+|--------|-----------------------|--------------------------------------|
+| GET    | `/dashboard/`         | View total units, rent summary, etc. |
+| GET    | `/index/`             | View linked lease-tenant-landlord    |
+
+---
+
+## 📚 API Documentation
+
+* **Swagger UI**: [http://127.0.0.1:8000/swagger/](http://127.0.0.1:8000/swagger/)
+
+---
+
+## 🗺️ ERD Diagram
+
+This is the visual representation of the data model:
+
+![ERD Diagram](docs/erd.png)
