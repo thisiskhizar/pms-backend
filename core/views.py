@@ -35,8 +35,8 @@ def dashboard_view(request):
 
     total_rent_income = Lease.objects.aggregate(total=Sum('rent_amount'))['total'] or 0
 
-    test_lease = Lease.objects.first()
-    lease_data = LeaseSerializer(test_lease).data if test_lease else {}
+    latest_lease = Lease.objects.order_by('-id').first()
+    lease_data = LeaseSerializer(latest_lease).data if latest_lease else {}
 
     return Response({
         'total_units': total_units,
@@ -44,7 +44,7 @@ def dashboard_view(request):
         'vacant_units': vacant_units,
         'landlords': list(landlords),
         'total_rent_income': total_rent_income,
-        'test_lease': lease_data
+        'latest_lease': lease_data
     })
 
 
