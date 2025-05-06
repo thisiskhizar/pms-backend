@@ -35,7 +35,7 @@ def dashboard_view(request):
 
     total_rent_income = Lease.objects.aggregate(total=Sum('rent_amount'))['total'] or 0
 
-    latest_lease = Lease.objects.order_by('-id').first()
+    latest_lease = Lease.objects.order_by('-created_at').first()
     lease_data = LeaseSerializer(latest_lease).data if latest_lease else {}
 
     return Response({
